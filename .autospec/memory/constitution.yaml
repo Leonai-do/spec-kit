@@ -1,0 +1,146 @@
+constitution:
+  project_name: "Spec Driven Vive Coding"
+  version: "1.0.0"
+  ratified: "2026-01-05"
+  last_amended: "2026-01-05"
+
+preamble: |
+  This constitution defines the non-negotiable principles and governance rules for the
+  project. All specifications, plans, and implementations must adhere to these principles
+  to ensure code quality, security, and maintainability.
+
+principles:
+  - id: "PRIN-001"
+    name: "Test-First Development"
+    category: "quality"
+    priority: "NON-NEGOTIABLE"
+    description: |
+      All new code must have tests written before implementation.
+      Tests define the expected behavior and serve as living documentation.
+    rationale: "Ensures code quality and prevents regressions"
+    enforcement:
+      - mechanism: "CI pipeline"
+        description: "Build fails if tests are missing or failing"
+    exceptions:
+      - "Prototype/spike code explicitly marked as such"
+      - "Documentation and configuration files"
+
+  - id: "PRIN-002"
+    name: "Documentation Standards"
+    category: "process"
+    priority: "MUST"
+    description: |
+      All public APIs, complex logic, and architecture decisions must be documented.
+      Breaking changes must be documented in CHANGELOG.
+    rationale: "Maintains project knowledge and onboarding efficiency"
+    enforcement:
+      - mechanism: "Code review"
+        description: "Reviewers verify documentation completeness"
+    exceptions: []
+
+  - id: "PRIN-003"
+    name: "Security First"
+    category: "security"
+    priority: "NON-NEGOTIABLE"
+    description: |
+      No secrets in code or version control. User input must be validated and sanitized.
+      Dependencies must be regularly audited for vulnerabilities.
+    rationale: "Protects project and users from security threats"
+    enforcement:
+      - mechanism: "Pre-commit hooks"
+        description: "Secrets detection prevents commits with credentials"
+      - mechanism: "CI pipeline"
+        description: "Dependency vulnerability scanning"
+    exceptions: []
+
+  - id: "PRIN-004"
+    name: "Performance Standards"
+    category: "quality"
+    priority: "MUST"
+    description: |
+      Validation functions must complete in <10ms.
+      User-facing operations must complete in <1s.
+    rationale: "Maintains responsive user experience"
+    enforcement:
+      - mechanism: "Benchmark tests"
+        description: "Automated performance regression tests"
+    exceptions:
+      - "Batch operations with explicit timing expectations"
+
+  - id: "PRIN-005"
+    name: "Code Review Required"
+    category: "process"
+    priority: "MUST"
+    description: |
+      All changes require review by at least one maintainer before merging.
+      Emergency changes may bypass review with post-hoc documentation.
+    rationale: "Ensures code quality and knowledge sharing"
+    enforcement:
+      - mechanism: "Git branch protection"
+        description: "PRs must have at least one approval"
+    exceptions:
+      - "Emergency hotfixes with team notification"
+
+sections:
+  - name: "Code Quality"
+    content: |
+      All code must pass linting and formatting checks.
+      No warnings allowed in production builds.
+      Dependencies must be explicitly versioned.
+
+  - name: "Version Control"
+    content: |
+      Feature development must occur on dedicated branches.
+      Commit messages must follow conventional commit format.
+      Never commit directly to main/guardian-state branches.
+
+  - name: "Architecture"
+    content: |
+      Follow established project patterns and conventions.
+      New patterns must be approved by maintainers.
+      Cross-cutting concerns must be handled consistently.
+
+governance:
+  amendment_process:
+    - step: 1
+      action: "Propose change via pull request"
+      requirements: "Include rationale and impact assessment"
+    - step: 2
+      action: "Review period"
+      requirements: "Minimum 48 hours for team review"
+    - step: 3
+      action: "Approval"
+      requirements: "Requires maintainer approval"
+    - step: 4
+      action: "Merge and version bump"
+      requirements: "Update version and last_amended date"
+
+  versioning_policy: |
+    Constitution versions follow semantic versioning.
+    MAJOR: Changes that invalidate existing compliant code.
+    MINOR: New principles or expanded guidance.
+    PATCH: Clarifications without behavioral change.
+
+  compliance_review:
+    frequency: "quarterly"
+    process: "Review all principles for relevance and enforcement effectiveness"
+
+  rules:
+    - "Changes require review by at least one maintainer"
+    - "Breaking changes require explicit team discussion"
+    - "Emergency changes may bypass review with post-hoc documentation"
+
+sync_impact:
+  version_change: "1.0.0 -> 1.0.0"
+  modified_principles: []
+  added_sections: []
+  removed_sections: []
+  templates_requiring_updates: []
+  follow_up_todos: []
+
+_meta:
+  version: "1.0.0"
+  generator: "autospec-standalone"
+  generator_version: "1.0.0"
+  created: "2026-01-05T00:00:00Z"
+  artifact_type: "constitution"
